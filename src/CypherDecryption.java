@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CypherDecryption {
 
@@ -20,6 +19,18 @@ public class CypherDecryption {
 
     String caesarDecipher(String cipheredMessage, int offset){
         return caesarCipher(cipheredMessage, 26 - (offset % 26));
+    }
+
+    String shuffleAlphabet(){
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        char[] alphaArray = alphabet.toCharArray();
+        for (int i = 0; i < alphaArray.length; i++){
+            int randomIndex = (int) (Math.random() * alphaArray.length);
+            char temp = alphaArray[i];
+            alphaArray[i] = alphaArray[randomIndex];
+            alphaArray[randomIndex] = temp;
+        }
+        return new String(alphaArray);
     }
 
     String simpleSubstitutionCipher(String message, String key){
@@ -66,6 +77,7 @@ public class CypherDecryption {
         CypherDecryption cypher = new CypherDecryption();
         String newmessage = cypher.caesarCipher("attack at dawn", 25);
         System.out.println(newmessage);
+        System.out.println(cypher.shuffleAlphabet());
         System.out.println(cypher.caesarDecipher(newmessage, 25));
         newmessage = cypher.simpleSubstitutionCipher("attack at dawn", "phqgiumeaylnofdxjkrcvstzwb");
         System.out.println(newmessage);
