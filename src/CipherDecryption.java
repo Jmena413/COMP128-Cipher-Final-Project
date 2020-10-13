@@ -11,6 +11,6 @@ public class CipherDecryption {
         String key = substitution.shuffleAlphabet();
         message = substitution.encrypt("attack at dawn", key);
         System.out.println(message);
-        System.out.println(substitution.decrypt(message,key));
+        System.out.println(substitution.decrypt(message, key));
     }
 }
